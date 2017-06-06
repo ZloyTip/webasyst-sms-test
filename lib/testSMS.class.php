@@ -21,10 +21,12 @@ class testSMS extends waSMSAdapter
 
     public function send($to, $text, $from = null)
     {
-		waLog::dump(array(
-			'to' => $to,
-			'text' => $text,
-			'from' => $from,
-		), 'testSms.log');
+        waLog::dump(array(
+            'to' => $to,
+            'text' => $text,
+            'from' => $from,
+        ), 'testSms.log');
+
+        return !preg_match('/(fail|error)/', $from) ? 'ok' : 'fail';
     }
 }
