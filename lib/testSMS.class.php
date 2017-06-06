@@ -27,6 +27,8 @@ class testSMS extends waSMSAdapter
             'from' => $from,
         ), 'testSms.log');
 
-        return !preg_match('/(fail|error)/', $from) ? 'ok' : 'fail';
+        $r = !preg_match('/(fail|error)/', $from);
+        $this->log($to, $text, $r ? 'ok' : 'fail');
+        return $r;
     }
 }
